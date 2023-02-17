@@ -7,14 +7,16 @@ sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 
 NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/$USER/.bashrc
-# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 source ~/.bashrc 
 
 echo "✅ brew installed successfully"
 
-sleep 5
-
 brew install derailed/k9s/k9s
+
+echo "✅ trying now with the full path"
+
+/home/linuxbrew/.linuxbrew/bin/brew install derailed/k9s/k9s
 
 sudo apt-get install fzf -y
 
