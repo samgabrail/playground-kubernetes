@@ -4,9 +4,6 @@ USER root
 RUN git clone https://github.com/ahmetb/kubectx /opt/kubectx \
 && RUN ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx \
 && ln -s /opt/kubectx/kubens /usr/local/bin/kubens \
-&& NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
-&& (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/codespace/.profile \
-&& eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" \
 && brew install derailed/k9s/k9s \
 && apt-get install fzf -y \
 && alias k="kubectl" \
@@ -22,4 +19,12 @@ RUN git clone https://github.com/ahmetb/kubectx /opt/kubectx \
 && echo 'alias kd="kubectl describe"' >> /home/codespace/.bashrc \
 && echo 'alias kg="kubectl get"' >> /home/codespace/.bashrc
 
+
+USER codespace
+RUN NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
+&& (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/codespace/.profile \
+&& eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+USER root
+RUN chown -R $CONTAINER_USER: /home/linuxbrew/.linuxbrew
 USER codespace
