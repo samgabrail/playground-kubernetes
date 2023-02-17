@@ -10,8 +10,10 @@ NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Ho
 # eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 source ~/.bashrc 
 
-
+echo "✅ brew installed successfully"
+sleep(10)
 brew install derailed/k9s/k9s
+
 sudo apt-get install fzf -y
 
 echo "✅ kubectx, kubens, fzf, homebrew, and k9s installed successfully"
