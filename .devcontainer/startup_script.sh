@@ -14,10 +14,6 @@ echo "✅ brew installed successfully"
 
 brew install derailed/k9s/k9s
 
-echo "✅ trying now with the full path"
-
-/home/linuxbrew/.linuxbrew/bin/brew install derailed/k9s/k9s
-
 sudo apt-get install fzf -y
 
 echo "✅ kubectx, kubens, fzf, homebrew, and k9s installed successfully"
