@@ -11,7 +11,9 @@ NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Ho
 source ~/.bashrc 
 
 echo "✅ brew installed successfully"
-sleep(10)
+
+sleep 5
+
 brew install derailed/k9s/k9s
 
 sudo apt-get install fzf -y
